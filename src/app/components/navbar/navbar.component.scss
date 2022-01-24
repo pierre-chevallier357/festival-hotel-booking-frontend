@@ -1,0 +1,36 @@
+@import "../../../styles.scss";
+
+.logo {
+  height: 50px;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.icon-spacer {
+  margin: 8px 15px;
+  transform: scale(1.3);
+}
+
+.button-spacer {
+  margin: 0 10px;
+}
+
+.search-input {
+  border-radius: 5px;
+  border: none;
+  width: 50%;
+  height: 38px;
+  font-size: medium;
+  outline: none;
+  padding-left: 10px;
+}
+
+::placeholder {
+  color: rgb(113, 113, 158);
+}
+
+.search-icon {
+  margin-left: 0;
+}
