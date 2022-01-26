@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { HeaderComponent } from './components/header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FirebaseAppModule } from '@angular/fire/app';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, LoginComponent],
@@ -25,6 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    FirebaseAppModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

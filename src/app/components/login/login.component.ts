@@ -8,8 +8,9 @@ import {
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { getAuth, signInWithPopup, FacebookAuthProvider } from 'firebase/auth';
+import { FirebaseApp } from '@angular/fire/app';
 
-/** Error when invalid control is dirty, touched, or submitted. */
+// Error when invalid control is dirty, touched, or submitted.
 export class LoginErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
     control: FormControl | null,
@@ -40,9 +41,11 @@ export class LoginComponent {
   });
   name: string = '';
 
+  constructor(public firebase: FirebaseApp) {}
+
   connectWithFacebook() {
     const provider = new FacebookAuthProvider();
-    const auth = getAuth();
+    const auth = getAuth(this.firebase);
     signInWithPopup(auth, provider)
       .then((result) => {
         const user = result.user;

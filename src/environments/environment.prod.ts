@@ -1,3 +1,5 @@
+import { initializeApp } from 'firebase/app';
+
 export const environment = {
   production: true,
   firebaseConfig: {
@@ -10,3 +12,5 @@ export const environment = {
     measurementId: 'G-GSESJL7F0D',
   },
 };
+
+initializeApp(environment.firebaseConfig);
