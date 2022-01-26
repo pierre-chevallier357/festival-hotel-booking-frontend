@@ -1,4 +1,3 @@
-import { LoginComponent } from './components/login/login.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { LodgingComponent } from './components/lodging/lodging.component';
 import { FestivalComponent } from './components/festival/festival.component';
@@ -10,7 +9,6 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'festival', component: FestivalComponent },
   { path: 'lodging', component: LodgingComponent },
-  { path: 'login', component: LoginComponent },
   { path: 'shopping-cart', component: ShoppingCartComponent },
   { path: 'home', component: HomeComponent },
 ];

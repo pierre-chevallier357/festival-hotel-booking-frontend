@@ -1,0 +1,9 @@
+<button
+  mat-raised-button
+  class="facebook-button"
+  (click)="connectWithFacebook()"
+>
+  <mat-icon class="facebook-icon">facebook</mat-icon>
+  Connexion via Facebook
+</button>
+<p *ngIf="name !== ''" class="connected">Connecté</p>

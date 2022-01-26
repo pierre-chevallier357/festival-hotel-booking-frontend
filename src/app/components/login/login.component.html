@@ -1,31 +1,31 @@
-<form [formGroup]="loginForm">
-  <mat-form-field appearance="fill">
-    <mat-label>Adresse e-mail</mat-label>
-    <input
-      type="email"
-      matInput
-      formControlName="emailFormControl"
-      [errorStateMatcher]="matcher"
-    />
-    <mat-error *ngIf="!loginForm.hasError('required')">
-      Veuillez saisir l'adresse e-mail
-    </mat-error>
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Mot de passe</mat-label>
-    <input
-      type="password"
-      matInput
-      formControlName="passwordFormControl"
-      [errorStateMatcher]="matcher"
-    />
-    <mat-error *ngIf="!loginForm.hasError('required')">
-      Veuillez saisir le mot de passe
-    </mat-error>
-  </mat-form-field>
-</form>
-<button mat-raised-button color="primary" (click)="connectWithFacebook()">
-  Connexion Facebook
-</button>
-<p *ngIf="name !== ''">Connected with {{ name }} account</p>
+<div class="center-elements">
+  <mat-card class="login-card">
+    <p class="you-are-text">Vous êtes ?</p>
+    <div class="align-buttons">
+      <button
+        mat-button
+        (click)="enableFestivalGoerTab()"
+        [ngClass]="{ 'role-button': festivalGoerTabIsActive }"
+      >
+        Festivalier
+      </button>
+      <button
+        mat-button
+        (click)="disableFestivalGoerTab()"
+        [ngClass]="{ 'role-button': !festivalGoerTabIsActive }"
+      >
+        Hébergeur/Organisateur
+      </button>
+    </div>
+  </mat-card>
+  <mat-card class="login-card bottom-card">
+    <div class="loggin-form-spacer">
+      <span *ngIf="festivalGoerTabIsActive">
+        <facebook-login></facebook-login>
+      </span>
+      <span *ngIf="!festivalGoerTabIsActive">
+        <professional-login></professional-login>
+      </span>
+    </div>
+  </mat-card>
+</div>

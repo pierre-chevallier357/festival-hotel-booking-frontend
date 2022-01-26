@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-festival',
+  selector: 'festival',
   templateUrl: './festival.component.html',
-  styleUrls: ['./festival.component.scss']
+  styleUrls: ['./festival.component.scss'],
 })
 export class FestivalComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

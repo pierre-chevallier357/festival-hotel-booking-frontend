@@ -1,0 +1,29 @@
+<form [formGroup]="loginForm">
+  <h2 class="festibed-connexion-text">Connexion via FestiBed</h2>
+  <mat-form-field appearance="fill">
+    <mat-label>Adresse e-mail</mat-label>
+    <input
+      type="email"
+      matInput
+      formControlName="emailFormControl"
+      [errorStateMatcher]="matcher"
+    />
+    <mat-error *ngIf="!loginForm.hasError('required')">
+      Veuillez saisir l'adresse e-mail
+    </mat-error>
+  </mat-form-field>
+  <br />
+  <mat-form-field appearance="fill">
+    <mat-label>Mot de passe</mat-label>
+    <input
+      type="password"
+      matInput
+      formControlName="passwordFormControl"
+      [errorStateMatcher]="matcher"
+    />
+    <mat-error *ngIf="!loginForm.hasError('required')">
+      Veuillez saisir le mot de passe
+    </mat-error>
+  </mat-form-field>
+</form>
+<button mat-raised-button class="connection-button">Se connecter</button>

@@ -31,3 +31,8 @@
 .search-icon {
   margin-left: 5px;
 }
+
+::ng-deep.login-menu {
+  max-width: none !important;
+  background-color: #cbe8fc;
+}
