@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { LoginService } from './../../services/login/login.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'navbar',
@@ -6,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  constructor() {}
+  @ViewChild('menuTrigger') trigger: any;
 
-  ngOnInit() {}
+  constructor(private loginService: LoginService) {}
+
+  ngOnInit() {
+    this.loginService.closeMenuSubject.subscribe(() =>
+      this.trigger.closeMenu()
+    );
+  }
 }

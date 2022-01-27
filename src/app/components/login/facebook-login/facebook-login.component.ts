@@ -1,6 +1,9 @@
+import { LoginService } from './../../../services/login/login.service';
 import { Component } from '@angular/core';
 import { getAuth, signInWithPopup, FacebookAuthProvider } from 'firebase/auth';
 import { FirebaseApp } from '@angular/fire/app';
+import { Subject } from 'rxjs';
+import { Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'facebook-login',
@@ -9,8 +12,12 @@ import { FirebaseApp } from '@angular/fire/app';
 })
 export class FacebookLoginComponent {
   name: string = '';
+  closeMenuEvent = new EventEmitter<void>();
 
-  constructor(public firebase: FirebaseApp) {}
+  constructor(
+    public firebase: FirebaseApp,
+    private loginService: LoginService
+  ) {}
 
   connectWithFacebook() {
     const provider = new FacebookAuthProvider();
@@ -33,5 +40,10 @@ export class FacebookLoginComponent {
 
         console.log(error.code, error.message);
       });
+    this.emitEventToParent();
+  }
+
+  emitEventToParent() {
+    this.loginService.closeMenu();
   }
 }
