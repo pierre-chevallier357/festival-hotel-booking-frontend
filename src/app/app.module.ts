@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FirebaseAppModule } from '@angular/fire/app';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +18,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfessionalLoginComponent } from './components/login/professional-login/professional-login.component';
 import { FacebookLoginComponent } from './components/login/facebook-login/facebook-login.component';
+import { FestivalComponent } from './components/festival/festival.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { FacebookLoginComponent } from './components/login/facebook-login/facebo
     LoginComponent,
     ProfessionalLoginComponent,
     FacebookLoginComponent,
+    FestivalComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +42,7 @@ import { FacebookLoginComponent } from './components/login/facebook-login/facebo
     FirebaseAppModule,
     MatMenuModule,
     MatCardModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
