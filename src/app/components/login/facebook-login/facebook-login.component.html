@@ -6,4 +6,6 @@
   <mat-icon class="facebook-icon">facebook</mat-icon>
   Connexion via Facebook
 </button>
-<p *ngIf="name !== ''" class="connected">Connecté</p>
+<p *ngIf="name !== ''" class="connected">
+  <img src="{{ user.photoURL }}" alt="User" style="border-radius: 50%" />
+</p>

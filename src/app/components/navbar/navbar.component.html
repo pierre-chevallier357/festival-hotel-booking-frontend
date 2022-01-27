@@ -26,7 +26,15 @@
     #menuTrigger="matMenuTrigger"
     [matMenuTriggerFor]="loginMenu"
   >
-    <mat-icon class="icon-spacer">account_circle</mat-icon>
+    <mat-icon *ngIf="userPictureUrl === ''" class="icon-spacer">
+      account_circle
+    </mat-icon>
+    <img
+      *ngIf="userPictureUrl !== ''"
+      src="{{ userPictureUrl }}"
+      alt="User"
+      class="user-picture"
+    />
   </button>
   <mat-menu #loginMenu="matMenu" class="login-menu">
     <a (click)="$event.stopPropagation(); $event.preventDefault()">

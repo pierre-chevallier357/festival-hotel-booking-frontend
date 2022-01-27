@@ -37,5 +37,5 @@ export class ProfessionalLoginComponent {
   });
   matcher = new LoginErrorStateMatcher();
 
-  constructor() {}
+  submitLoginForm() {}
 }

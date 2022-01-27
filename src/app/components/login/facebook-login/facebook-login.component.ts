@@ -13,6 +13,7 @@ import { Output, EventEmitter } from '@angular/core';
 export class FacebookLoginComponent {
   name: string = '';
   closeMenuEvent = new EventEmitter<void>();
+  user: any;
 
   constructor(
     public firebase: FirebaseApp,
@@ -25,12 +26,14 @@ export class FacebookLoginComponent {
     signInWithPopup(auth, provider)
       .then((result) => {
         const user = result.user;
+        this.user = user;
         const credential = FacebookAuthProvider.credentialFromResult(result);
         const accessToken = credential ? credential.accessToken : null;
 
         console.log(user.displayName);
         console.log(user);
         user.displayName ? (this.name = user.displayName) : (this.name = '');
+        if (user.photoURL) this.sendUserPictureToService(user.photoURL);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -45,5 +48,9 @@ export class FacebookLoginComponent {
 
   emitEventToParent() {
     this.loginService.closeMenu();
+  }
+
+  sendUserPictureToService(pictureUrl: string) {
+    this.loginService.setUserPicture(pictureUrl);
   }
 }
