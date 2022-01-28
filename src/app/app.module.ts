@@ -1,3 +1,4 @@
+import { FestivalFilterComponent } from './components/festival-filter/festival-filter.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,6 +12,8 @@ import { FirebaseAppModule } from '@angular/fire/app';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -28,6 +31,7 @@ import { FestivalComponent } from './components/festival/festival.component';
     ProfessionalLoginComponent,
     FacebookLoginComponent,
     FestivalComponent,
+    FestivalFilterComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +47,8 @@ import { FestivalComponent } from './components/festival/festival.component';
     MatMenuModule,
     MatCardModule,
     HttpClientModule,
+    MatSelectModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

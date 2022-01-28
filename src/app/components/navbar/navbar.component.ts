@@ -1,5 +1,7 @@
+import { FestivalService } from './../../services/festival/festival.service';
+import { FilterService } from './../../services/filter/filter.service';
 import { LoginService } from './../../services/login/login.service';
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -8,14 +10,23 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnDestroy {
-  @ViewChild('menuTrigger') trigger: any;
+  @ViewChild('loginTrigger') loginTrigger: any;
+  @ViewChild('filterTrigger') filterTrigger: any;
   userPictureUrl: string = '';
-  closeMenu: Subscription;
+  closeLoginMenu: Subscription;
   pictureUrl: Subscription;
+  searchValue: string = '';
 
-  constructor(private loginService: LoginService) {
-    this.closeMenu = this.loginService.closeMenuSubject.subscribe(() =>
-      this.trigger.closeMenu()
+  constructor(
+    private loginService: LoginService,
+    private filterService: FilterService,
+    private festivalService: FestivalService
+  ) {
+    this.closeLoginMenu = this.loginService.closeMenuSubject.subscribe(() =>
+      this.loginTrigger.closeMenu()
+    );
+    this.closeLoginMenu = this.filterService.closeMenuSubject.subscribe(() =>
+      this.filterTrigger.closeMenu()
     );
     this.pictureUrl = this.loginService.pictureUrlSubject.subscribe((value) => {
       this.userPictureUrl = value;
@@ -23,7 +34,11 @@ export class NavbarComponent implements OnDestroy {
   }
 
   ngOnDestroy() {
-    this.closeMenu.unsubscribe();
+    this.closeLoginMenu.unsubscribe();
     this.pictureUrl.unsubscribe();
+  }
+
+  searchByName() {
+    this.festivalService.searchFestivalsByName(this.searchValue);
   }
 }

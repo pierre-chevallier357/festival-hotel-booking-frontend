@@ -1,3 +1,8 @@
-<mat-card style="background-color: lightblue">
-  {{ testData | json }}
+<mat-card *ngFor="let festi of festivalList" class="festi-card">
+  <img src="assets/festival.jpeg" alt="Festival" style="height: 100px" />
+  <div style="display: block">
+    <h1 class="festi-title">{{ festi.nom | uppercase }}</h1>
+    <p class="festi-desc">{{ festi.complementDomaine }}</p>
+    <button>Sélectionner</button>
+  </div>
 </mat-card>

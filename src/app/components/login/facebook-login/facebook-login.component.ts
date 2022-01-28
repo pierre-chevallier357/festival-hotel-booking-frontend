@@ -30,8 +30,6 @@ export class FacebookLoginComponent {
         const credential = FacebookAuthProvider.credentialFromResult(result);
         const accessToken = credential ? credential.accessToken : null;
 
-        console.log(user.displayName);
-        console.log(user);
         user.displayName ? (this.name = user.displayName) : (this.name = '');
         if (user.photoURL) this.sendUserPictureToService(user.photoURL);
       })
