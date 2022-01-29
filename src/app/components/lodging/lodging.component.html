@@ -1,1 +1,11 @@
-<p>Hébergement</p>
+<mat-card *ngFor="let lodging of lodgingList" class="festi-card">
+  <img src="assets/lodging.jpeg" alt="Lodging" style="height: 100px" />
+  <div style="display: block">
+    <h1 class="festi-title">{{ lodging.nom | uppercase }}</h1>
+    <p class="festi-desc">{{ lodging.complementDomaine }}</p>
+  </div>
+  <span class="item-spacer"></span>
+  <button mat-button class="festi-button" routerLink="/lodging">
+    Ajouter au panier
+  </button>
+</mat-card>

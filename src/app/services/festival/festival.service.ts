@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class FestivalService {
-  restApiUrl: string = 'http://localhost:8080';
+  restApiUrl: string = 'http://localhost:8080/festival';
   public festivalSource = new BehaviorSubject<any[]>([]);
 
   constructor(private httpClient: HttpClient) {}

@@ -1,3 +1,4 @@
+import { LodgingComponent } from './components/lodging/lodging.component';
 import { FestivalFilterComponent } from './components/festival-filter/festival-filter.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -32,6 +33,7 @@ import { FestivalComponent } from './components/festival/festival.component';
     FacebookLoginComponent,
     FestivalComponent,
     FestivalFilterComponent,
+    LodgingComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,11 @@
   <div style="display: block">
     <h1 class="festi-title">{{ festi.nom | uppercase }}</h1>
     <p class="festi-desc">{{ festi.complementDomaine }}</p>
-    <button>Sélectionner</button>
+    <p>{{ festi.idFestival }}</p>
   </div>
+  <span class="item-spacer"></span>
+  <button mat-button class="festi-button" routerLink="/lodging">
+    Sélectionner
+  </button>
 </mat-card>
+{{ festivalList | json }}

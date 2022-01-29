@@ -1,3 +1,5 @@
+@import "../navbar/navbar.component.scss";
+
 .festi-card {
   background-color: rgb(240, 240, 240);
   margin: 20px;
@@ -12,4 +14,16 @@
 
 .festi-desc {
   margin-left: 20px;
+}
+
+.festi-button {
+  margin-top: 37px;
+  height: 30px;
+  margin-left: 20px;
+  border: none;
+  background-color: #286cb9;
+  border-radius: 5px;
+  color: white;
+  font-size: large;
+  padding: 0 10px;
 }
