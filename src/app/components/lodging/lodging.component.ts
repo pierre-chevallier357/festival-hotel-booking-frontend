@@ -1,3 +1,4 @@
+import { FestivalService } from 'src/app/services/festival/festival.service';
 import { LodgingService } from './../../services/lodging/lodging.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
@@ -12,11 +13,16 @@ export class LodgingComponent implements OnInit, OnDestroy {
   subscription1: Subscription = new Subscription();
   subscription2: Subscription = new Subscription();
 
-  constructor(private lodgingService: LodgingService) {}
+  constructor(
+    private lodgingService: LodgingService,
+    private festivalService: FestivalService
+  ) {}
 
   ngOnInit() {
+    let selectedFestival: { id: number; city: string } =
+      this.festivalService.savedFestival;
     this.subscription1 = this.lodgingService
-      .getLodgingsByCity('REIMS')
+      .getLodgingsByCity(selectedFestival.id, selectedFestival.city)
       .subscribe((lodgingList) => (this.lodgingList = lodgingList));
     this.subscription2 = this.lodgingService.lodgingSource
       .asObservable()

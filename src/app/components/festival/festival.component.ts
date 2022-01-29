@@ -29,4 +29,11 @@ export class FestivalComponent implements OnInit, OnDestroy {
     this.subscription1.unsubscribe();
     this.subscription2.unsubscribe();
   }
+
+  saveSelectedFestival(id: number, city: string) {
+    this.festivalService.savedFestival = {
+      id: id,
+      city: city,
+    };
+  }
 }

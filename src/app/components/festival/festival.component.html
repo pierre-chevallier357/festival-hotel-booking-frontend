@@ -4,10 +4,15 @@
     <h1 class="festi-title">{{ festi.nom | uppercase }}</h1>
     <p class="festi-desc">{{ festi.complementDomaine }}</p>
     <p>{{ festi.idFestival }}</p>
+    <p>{{ festi.ville }}</p>
   </div>
   <span class="item-spacer"></span>
-  <button mat-button class="festi-button" routerLink="/lodging">
+  <button
+    mat-button
+    class="festi-button"
+    (click)="saveSelectedFestival(festi.idFestival, festi.ville)"
+    routerLink="/lodging"
+  >
     Sélectionner
   </button>
 </mat-card>
-{{ festivalList | json }}

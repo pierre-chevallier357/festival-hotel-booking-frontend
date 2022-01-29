@@ -11,9 +11,17 @@ export class LodgingService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getLodgingsByCity(city: string): Observable<any[]> {
+  getLodgingsByCity(festivalId: number, city: string): Observable<any[]> {
+    console.log('id:' + festivalId, 'city:' + city);
     return this.httpClient
-      .get<any[]>(this.restApiUrl + '/search-by-ville/' + '111&REIMS&HOTEL')
+      .get<any[]>(
+        this.restApiUrl +
+          '/search-by-ville/' +
+          festivalId +
+          '&' +
+          'REIMS' +
+          '&HOTEL'
+      )
       .pipe();
   }
 
