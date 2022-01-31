@@ -4,13 +4,13 @@
     <h1 class="festi-title">{{ festi.nom | uppercase }}</h1>
     <p class="festi-desc">{{ festi.complementDomaine }}</p>
     <p class="festi-desc">{{ festi.idFestival }}</p>
-    <p class="festi-desc">{{ festi.ville }}</p>
+    <p class="festi-desc">{{ festi.commune }}</p>
   </div>
   <span class="item-spacer"></span>
   <button
     mat-button
     class="festi-button"
-    (click)="saveSelectedFestival(festi.idFestival, festi.ville)"
+    (click)="saveSelectedFestival(festi.idFestival, festi.commune)"
     routerLink="/lodging"
   >
     Sélectionner

@@ -1,6 +1,7 @@
 import { FestivalService } from './../../services/festival/festival.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Festival } from 'src/app/models/festival';
 
 @Component({
   selector: 'festival',
@@ -8,17 +9,17 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./festival.component.scss'],
 })
 export class FestivalComponent implements OnInit, OnDestroy {
-  festivalList: any[] = [];
-  subscription1: Subscription = new Subscription();
-  subscription2: Subscription = new Subscription();
+  festivalList: Festival[] = [];
+  allFestivalsSubscription: Subscription = new Subscription();
+  updatedFestivalList: Subscription = new Subscription();
 
   constructor(private festivalService: FestivalService) {}
 
   ngOnInit() {
-    this.subscription1 = this.festivalService
-      .getFestivalsByCity('REIMS')
+    this.allFestivalsSubscription = this.festivalService
+      .getAllFestivals()
       .subscribe((festivalList) => (this.festivalList = festivalList));
-    this.subscription2 = this.festivalService.festivalSource
+    this.updatedFestivalList = this.festivalService.festivalSource
       .asObservable()
       .subscribe((festivalList) => {
         this.festivalList = festivalList;
@@ -26,8 +27,8 @@ export class FestivalComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscription1.unsubscribe();
-    this.subscription2.unsubscribe();
+    this.allFestivalsSubscription.unsubscribe();
+    this.updatedFestivalList.unsubscribe();
   }
 
   saveSelectedFestival(id: number, city: string) {

@@ -2,10 +2,11 @@
   <img src="assets/lodging.jpeg" alt="Lodging" style="height: 100px" />
   <div style="display: block">
     <h1 class="festi-title">{{ lodging.nom | uppercase }}</h1>
-    <p class="festi-desc">{{ lodging.complementDomaine }}</p>
+    <p class="festi-desc">{{ lodging.classement }}</p>
+    <p class="festi-desc">{{ lodging.commune }}</p>
   </div>
   <span class="item-spacer"></span>
-  <button mat-button class="festi-button" routerLink="/lodging">
+  <button mat-button class="festi-button" routerLink="/shopping-cart">
     Ajouter au panier
   </button>
 </mat-card>

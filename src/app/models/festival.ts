@@ -1,13 +1,9 @@
 export interface Festival {
-  id: number;
-  name: string;
-  type: string;
-  subtype: string;
-  departement: number;
-  duration: number;
-  monthNumber: number;
-  city: string;
-  comment: string;
-  capacity: number;
-  nbOfBookedPass: number;
+  idFestival: number;
+  nom: string;
+  domaine: string;
+  complementDomaine: string;
+  departement: string;
+  moisIndicatif: string;
+  commune: string;
 }

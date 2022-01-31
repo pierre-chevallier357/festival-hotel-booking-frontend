@@ -1,3 +1,4 @@
+import { Etablissement } from './../../models/etablissement';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -7,27 +8,30 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class LodgingService {
   restApiUrl: string = 'http://localhost:8080/etablissement';
-  public lodgingSource = new BehaviorSubject<any[]>([]);
+  public lodgingSource = new BehaviorSubject<Etablissement[]>([]);
 
   constructor(private httpClient: HttpClient) {}
 
-  getLodgingsByCity(festivalId: number, city: string): Observable<any[]> {
-    console.log('id:' + festivalId, 'city:' + city);
+  getLodgingsByCity(
+    festivalId: number,
+    city: string
+  ): Observable<Etablissement[]> {
     return this.httpClient
-      .get<any[]>(
+      .get<Etablissement[]>(
         this.restApiUrl +
           '/search-by-ville/' +
           festivalId +
           '&' +
-          'REIMS' +
-          '&HOTEL'
+          city +
+          '&' +
+          'HOTEL'
       )
       .pipe();
   }
 
   searchLodgingsByName(name: string) {
     this.httpClient
-      .get<any[]>(this.restApiUrl + '/search-by-ville/' + 'name')
+      .get<Etablissement[]>(this.restApiUrl + '/search-by-ville/' + 'name')
       .subscribe((festivalList) => {
         this.lodgingSource.next(festivalList);
       });

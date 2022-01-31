@@ -1,9 +1,7 @@
 import { LoginService } from './../../../services/login/login.service';
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 import { getAuth, signInWithPopup, FacebookAuthProvider } from 'firebase/auth';
 import { FirebaseApp } from '@angular/fire/app';
-import { Subject } from 'rxjs';
-import { Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'facebook-login',
