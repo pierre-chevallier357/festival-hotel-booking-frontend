@@ -36,7 +36,7 @@ export class LodgingService {
       idProduit: 0,
       idFestivalier: 0,
       idFestival: festival.idFestival,
-      idEtablissement: lodging.IDEtab,
+      idEtablissement: lodging.idetab,
       nbPass: 1,
     };
     return this.httpClient.post<Produit>(

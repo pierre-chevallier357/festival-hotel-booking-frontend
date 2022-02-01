@@ -1,5 +1,5 @@
 export interface Etablissement {
-  IDEtab: number;
+  idetab: number;
   type: string;
   classement: string;
   nom: string;
@@ -13,6 +13,7 @@ export interface Etablissement {
   region: string;
   commune: string;
   nbLogement: number;
-  coordonnesGPSX: number;
-  coordonnesGPSY: number;
+  coordonnesGPSString: string;
+  coordonnesGPSX?: number;
+  coordonnesGPSY?: number;
 }

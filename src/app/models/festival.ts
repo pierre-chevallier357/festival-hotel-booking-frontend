@@ -6,4 +6,5 @@ export interface Festival {
   departement: string;
   moisIndicatif: string;
   commune: string;
+  duree: number;
 }

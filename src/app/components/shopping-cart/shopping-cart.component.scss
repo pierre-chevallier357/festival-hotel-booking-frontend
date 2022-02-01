@@ -1,11 +1,16 @@
 body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(to bottom right, #e3f0ff, #fafcff);
   height: 100vh;
-  display: flex;
   justify-content: center;
   align-items: top;
+}
+
+.shopping-cart-card {
+  width: 80%;
+  margin: 15px auto;
+  background: linear-gradient(to bottom right, #e3f0ff, #fafcff);
+  border-radius: 20px;
 }
 
 .CartContainer {
@@ -58,13 +63,13 @@ body {
 }
 .title {
   padding-top: 10px;
-  line-height: 10px;
-  font-size: 32px;
+  line-height: 20px;
+  font-size: 24px;
   font-weight: 800;
   color: #202020;
 }
 .subtitle {
-  line-height: 10px;
+  line-height: 20px;
   font-size: 18px;
   font-weight: 600;
   color: #909090;
@@ -170,7 +175,7 @@ hr {
   font-size: 16px;
   font-weight: 500;
   color: #909090;
-  line-height: 10px;
+  line-height: 20px;
 }
 .total-amount {
   font-size: 36px;

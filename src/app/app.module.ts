@@ -1,3 +1,4 @@
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { LodgingComponent } from './components/lodging/lodging.component';
 import { FestivalFilterComponent } from './components/festival-filter/festival-filter.component';
 import { NgModule } from '@angular/core';
@@ -34,6 +35,7 @@ import { FestivalComponent } from './components/festival/festival.component';
     FestivalComponent,
     FestivalFilterComponent,
     LodgingComponent,
+    ShoppingCartComponent,
   ],
   imports: [
     BrowserModule,
