@@ -41,4 +41,30 @@ export class NavbarComponent implements OnDestroy {
   searchByName() {
     this.festivalService.searchFestivalsByName(this.searchValue);
   }
+
+  searchByType(type: string) {
+    this.festivalService.searchFestivalsByType(type);
+  }
+
+  searchByMonth(monthId: number) {
+    this.festivalService.searchFestivalsByMonth(monthId);
+  }
+
+  searchByDepartement(departementName: string) {
+    this.festivalService.searchFestivalsByDepartement(departementName);
+  }
+
+  searchFestival(filters: any) {
+    console.log('name:', this.searchValue);
+    console.log('is searchValue empty ? :' + this.searchValue !== '');
+    if (this.searchValue !== '') {
+      this.searchByName();
+    } else if (filters[0].name !== '') {
+      this.searchByType(filters[0].name);
+    } else if (filters[1].name !== '') {
+      this.searchByMonth(filters[1].id);
+    } else if (filters[2].name !== '') {
+      this.searchByDepartement(filters[2].name);
+    }
+  }
 }

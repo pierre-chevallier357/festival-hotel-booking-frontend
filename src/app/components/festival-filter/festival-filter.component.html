@@ -1,18 +1,22 @@
 <mat-form-field appearance="fill" class="criteria">
   <mat-label>Type de festival</mat-label>
-  <mat-select [(value)]="selectedFestival">
-    <!--<mat-option>Aucun</mat-option>-->
+  <mat-select
+    [(value)]="selectedType"
+    (selectionChange)="sendFiltersToParent()"
+  >
     <mat-option *ngFor="let type of festivalList" [value]="type">
-      {{ type.nom }}
+      {{ type.name }}
     </mat-option>
   </mat-select>
 </mat-form-field>
-{{ selectedFestival.nom }}
+{{ selectedType.name }}
 
 <mat-form-field appearance="fill" class="criteria">
   <mat-label>Département</mat-label>
-  <mat-select [(ngModel)]="selectedDepartement">
-    <!--<mat-option [value]="selectedDepartement">Aucun</mat-option>-->
+  <mat-select
+    [(ngModel)]="selectedDepartement"
+    (selectionChange)="sendFiltersToParent()"
+  >
     <mat-option
       *ngFor="let departement of departementList"
       [value]="departement"
@@ -26,8 +30,10 @@
 
 <mat-form-field appearance="fill" class="criteria">
   <mat-label>Mois</mat-label>
-  <mat-select [(ngModel)]="selectedMonth">
-    <!--<mat-option [value]="selectedMonth">Aucun</mat-option>-->
+  <mat-select
+    [(ngModel)]="selectedMonth"
+    (selectionChange)="sendFiltersToParent()"
+  >
     <mat-option *ngFor="let month of months" [value]="month">
       {{ month.name }}
     </mat-option>

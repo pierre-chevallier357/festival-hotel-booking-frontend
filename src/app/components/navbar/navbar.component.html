@@ -33,7 +33,9 @@
   </button>
   <mat-menu #filterMenu="matMenu" class="login-menu">
     <a (click)="$event.stopPropagation(); $event.preventDefault()">
-      <festival-filter></festival-filter>
+      <festival-filter
+        (filtersChange)="searchFestival($event)"
+      ></festival-filter>
     </a>
   </mat-menu>
 

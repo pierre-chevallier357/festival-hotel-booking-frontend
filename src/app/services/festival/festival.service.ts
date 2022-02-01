@@ -32,12 +32,41 @@ export class FestivalService {
         this.festivalSource.next(festivalList);
       });
   }
-  /*
+
   searchFestivalsByType(type: string) {
     this.httpClient
-      .get<Festival[]>(this.restApiUrl + '/reach-festival-type/' + type)
+      .get<Festival[]>(this.restApiUrl + '/search-festival-type/' + type)
       .subscribe((festivalList) => {
         this.festivalSource.next(festivalList);
       });
-  }*/
+  }
+
+  searchFestivalsByMonth(monthId: number) {
+    const monthIdString = this.addZeroToId(monthId);
+    this.httpClient
+      .get<Festival[]>(
+        this.restApiUrl + '/search-festival-month/' + monthIdString
+      )
+      .subscribe((festivalList) => {
+        this.festivalSource.next(festivalList);
+      });
+  }
+
+  searchFestivalsByDepartement(departementName: string) {
+    this.httpClient
+      .get<Festival[]>(
+        this.restApiUrl + '/search-festival-departement/' + departementName
+      )
+      .subscribe((festivalList) => {
+        this.festivalSource.next(festivalList);
+      });
+  }
+
+  addZeroToId(id: number): string {
+    if (id <= 10) {
+      return '0' + id;
+    } else {
+      return id.toString();
+    }
+  }
 }

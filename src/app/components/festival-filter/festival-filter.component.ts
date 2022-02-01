@@ -1,5 +1,5 @@
 import { FestivalTypes } from '../../enums/festival-types';
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Months } from 'src/app/enums/months';
 import { Departements } from 'src/app/enums/departements';
 
@@ -9,16 +9,39 @@ import { Departements } from 'src/app/enums/departements';
   styleUrls: ['./festival-filter.component.scss'],
 })
 export class FestivalFilterComponent {
-  festivalList: { nom: string }[] = FestivalTypes;
-  selectedFestival: { nom: string } = { nom: '' };
+  @Output() filtersChange: EventEmitter<
+    [
+      { name: string },
+      { id: number; name: string },
+      { id: number; name: string }
+    ]
+  > = new EventEmitter<
+    [
+      { name: string },
+      { id: number; name: string },
+      { id: number; name: string }
+    ]
+  >();
+
+  festivalList: { name: string }[] = FestivalTypes;
   months: { id: number; name: string }[] = Months;
+  departementList: { id: number; name: string }[] = Departements;
+
+  selectedType: { name: string } = { name: '' };
   selectedMonth: { id: number; name: string } = {
     id: 0,
     name: '',
   };
-  departementList: { id: number; name: string }[] = Departements;
   selectedDepartement: { id: number; name: string } = {
     id: 0,
     name: '',
   };
+
+  sendFiltersToParent() {
+    this.filtersChange.emit([
+      this.selectedType,
+      this.selectedMonth,
+      this.selectedDepartement,
+    ]);
+  }
 }

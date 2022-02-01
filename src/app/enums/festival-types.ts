@@ -1,42 +1,42 @@
-let FestivalTypes: { nom: string }[] = [
+let FestivalTypes: { name: string }[] = [
   {
-    nom: 'Arts plastiques et visuels',
+    name: 'Arts plastiques et visuels',
   },
   {
-    nom: 'Cinéma et audiovisuel',
+    name: 'Cinéma et audiovisuel',
   },
   {
-    nom: 'Cirque et Arts de la rue',
+    name: 'Cirque et Arts de la rue',
   },
   {
-    nom: 'Danse',
+    name: 'Danse',
   },
   {
-    nom: 'Divers Spectacle vivant',
+    name: 'Divers Spectacle vivant',
   },
   {
-    nom: 'Domaines divers',
+    name: 'Domaines divers',
   },
   {
-    nom: 'Livre et littérature',
+    name: 'Livre et littérature',
   },
   {
-    nom: 'Musiques actuelles',
+    name: 'Musiques actuelles',
   },
   {
-    nom: 'Musiques classiques',
+    name: 'Musiques classiques',
   },
   {
-    nom: 'Pluridisciplinaire Musique',
+    name: 'Pluridisciplinaire Musique',
   },
   {
-    nom: 'Pluridisciplinaire Spectacle vivant',
+    name: 'Pluridisciplinaire Spectacle vivant',
   },
   {
-    nom: 'Théâtre',
+    name: 'Théâtre',
   },
   {
-    nom: 'Transdisciplinaire',
+    name: 'Transdisciplinaire',
   },
 ];
 
