@@ -54,9 +54,7 @@ export class NavbarComponent implements OnDestroy {
     this.festivalService.searchFestivalsByDepartement(departementName);
   }
 
-  searchFestival(filters: any) {
-    console.log('name:', this.searchValue);
-    console.log('is searchValue empty ? :' + this.searchValue !== '');
+  searchFestival(filters?: any) {
     if (this.searchValue !== '') {
       this.searchByName();
     } else if (filters[0].name !== '') {
