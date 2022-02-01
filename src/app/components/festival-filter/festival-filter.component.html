@@ -4,12 +4,11 @@
     [(value)]="selectedType"
     (selectionChange)="sendFiltersToParent()"
   >
-    <mat-option *ngFor="let type of festivalList" [value]="type">
+    <mat-option *ngFor="let type of festivalTypesList" [value]="type">
       {{ type.name }}
     </mat-option>
   </mat-select>
 </mat-form-field>
-{{ selectedType.name }}
 
 <mat-form-field appearance="fill" class="criteria">
   <mat-label>Département</mat-label>
@@ -26,8 +25,6 @@
   </mat-select>
 </mat-form-field>
 
-{{ selectedDepartement.name }}
-
 <mat-form-field appearance="fill" class="criteria">
   <mat-label>Mois</mat-label>
   <mat-select
@@ -39,4 +36,3 @@
     </mat-option>
   </mat-select>
 </mat-form-field>
-{{ selectedMonth.name }}

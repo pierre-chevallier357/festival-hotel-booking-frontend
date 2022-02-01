@@ -1,5 +1,5 @@
 import { Festival } from './../../models/festival';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of, Subject, Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -68,5 +68,31 @@ export class FestivalService {
     } else {
       return id.toString();
     }
+  }
+
+  searchFestival(
+    name: string,
+    city: string,
+    type: string,
+    departement: string,
+    month: string
+  ) {
+    this.httpClient
+      .get<Festival[]>(
+        this.restApiUrl +
+          '/search-festival/' +
+          name +
+          '&' +
+          city +
+          '&' +
+          type +
+          '&' +
+          departement +
+          '&' +
+          month
+      )
+      .subscribe((festivalList) => {
+        this.festivalSource.next(festivalList);
+      });
   }
 }

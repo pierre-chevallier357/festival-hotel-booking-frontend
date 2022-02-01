@@ -1,0 +1,19 @@
+<mat-form-field appearance="fill" class="criteria">
+  <mat-label>Type d'établissement</mat-label>
+  <mat-select
+    [(value)]="selectedType"
+    (selectionChange)="sendFiltersToParent()"
+  >
+    <mat-option *ngFor="let type of lodgingTypeList" [value]="type">
+      {{ type.name }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<input
+  type="text"
+  class="lodging-filter-input"
+  placeholder="Rechercher par ville"
+  [(ngModel)]="cityValue"
+  (keyup.enter)="sendFiltersToParent()"
+/>

@@ -1,3 +1,4 @@
+import { LodgingFilterComponent } from './components/lodging-filter/lodging-filter/lodging-filter.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { LodgingComponent } from './components/lodging/lodging.component';
 import { FestivalFilterComponent } from './components/festival-filter/festival-filter.component';
@@ -36,6 +37,7 @@ import { FestivalComponent } from './components/festival/festival.component';
     FestivalFilterComponent,
     LodgingComponent,
     ShoppingCartComponent,
+    LodgingFilterComponent,
   ],
   imports: [
     BrowserModule,

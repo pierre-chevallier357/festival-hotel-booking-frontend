@@ -1,3 +1,4 @@
+import { UserService } from './../../services/user/user.service';
 import { FestivalService } from './../../services/festival/festival.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
@@ -13,7 +14,10 @@ export class FestivalComponent implements OnInit, OnDestroy {
   allFestivalsSubscription: Subscription = new Subscription();
   updatedFestivalList: Subscription = new Subscription();
 
-  constructor(private festivalService: FestivalService) {}
+  constructor(
+    private festivalService: FestivalService,
+    private userService: UserService
+  ) {}
 
   ngOnInit() {
     this.allFestivalsSubscription = this.festivalService
@@ -29,6 +33,10 @@ export class FestivalComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.allFestivalsSubscription.unsubscribe();
     this.updatedFestivalList.unsubscribe();
+  }
+
+  createTempUser() {
+    this.userService.createTempUser();
   }
 
   saveSelectedFestival(festival: Festival) {

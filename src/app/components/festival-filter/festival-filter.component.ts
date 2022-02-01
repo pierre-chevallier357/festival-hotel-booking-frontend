@@ -23,7 +23,7 @@ export class FestivalFilterComponent {
     ]
   >();
 
-  festivalList: { name: string }[] = FestivalTypes;
+  festivalTypesList: { name: string }[] = FestivalTypes;
   months: { id: number; name: string }[] = Months;
   departementList: { id: number; name: string }[] = Departements;
 

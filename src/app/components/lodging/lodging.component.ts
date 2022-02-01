@@ -24,9 +24,14 @@ export class LodgingComponent implements OnInit, OnDestroy {
   ngOnInit() {
     let selectedFestival: Festival = this.festivalService.savedFestival;
     this.selectedFestival = selectedFestival;
-    this.lodgingListSubscription = this.lodgingService
-      .getLodgingsByCity(selectedFestival.idFestival, selectedFestival.commune)
-      .subscribe((lodgingList) => (this.lodgingList = lodgingList));
+    this.lodgingService.searchLodging(
+      selectedFestival.idFestival,
+      'null',
+      'null',
+      selectedFestival.commune.toUpperCase()
+    );
+    this.lodgingListSubscription =
+      this.lodgingService.lodgingSource.subscribe();
     this.filteredLodgingListSubscription = this.lodgingService.lodgingSource
       .asObservable()
       .subscribe((lodgingList) => {
@@ -40,7 +45,9 @@ export class LodgingComponent implements OnInit, OnDestroy {
   }
 
   addProductToShoppingCart(lodging: Etablissement) {
-    console.log('Festival: ' + this.selectedFestival.nom);
-    console.log('Lodging: ' + lodging.nom);
+    this.lodgingService.addProductToShoppingCart(
+      this.selectedFestival,
+      lodging
+    );
   }
 }

@@ -9,13 +9,17 @@
 
   <span class="item-spacer"></span>
 
+  <!--Festival search-->
   <input
+    *ngIf="currentRoute !== '/lodging'"
     class="search-input"
     type="text"
     placeholder="Rechercher un Festibed"
     [(ngModel)]="searchValue"
+    (keyup.enter)="searchFestival()"
   />
   <button
+    *ngIf="currentRoute !== '/lodging'"
     mat-icon-button
     class="button-spacer search-icon"
     (click)="searchFestival()"
@@ -24,6 +28,35 @@
   </button>
 
   <button
+    *ngIf="currentRoute !== '/lodging'"
+    mat-icon-button
+    class="button-spacer search-icon"
+    #filterTrigger="matMenuTrigger"
+    [matMenuTriggerFor]="filterMenu"
+  >
+    <mat-icon class="icon-spacer">filter_alt</mat-icon>
+  </button>
+
+  <!--Lodging search-->
+  <input
+    *ngIf="currentRoute === '/lodging'"
+    class="search-input"
+    type="text"
+    placeholder="Rechercher un Festibed"
+    [(ngModel)]="searchValue"
+    (keyup.enter)="searchFestival()"
+  />
+  <button
+    *ngIf="currentRoute === '/lodging'"
+    mat-icon-button
+    class="button-spacer search-icon"
+    (click)="searchFestival()"
+  >
+    <mat-icon class="icon-spacer">search</mat-icon>
+  </button>
+
+  <button
+    *ngIf="currentRoute === '/lodging'"
     mat-icon-button
     class="button-spacer search-icon"
     #filterTrigger="matMenuTrigger"
@@ -33,9 +66,16 @@
   </button>
   <mat-menu #filterMenu="matMenu" class="login-menu">
     <a (click)="$event.stopPropagation(); $event.preventDefault()">
-      <festival-filter
-        (filtersChange)="searchFestival($event)"
-      ></festival-filter>
+      <div *ngIf="currentRoute !== '/lodging'">
+        <festival-filter
+          (filtersChange)="searchFestival($event)"
+        ></festival-filter>
+      </div>
+      <div *ngIf="currentRoute === '/lodging'">
+        <lodging-filter
+          (filtersChange)="searchLodging($event)"
+        ></lodging-filter>
+      </div>
     </a>
   </mat-menu>
 
