@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 export class FestivalService {
   restApiUrl: string = 'http://localhost:8080/festival';
   public festivalSource = new BehaviorSubject<Festival[]>([]);
-  public savedFestival: any = null;
+  public savedFestival!: Festival;
 
   constructor(private httpClient: HttpClient) {}
 
