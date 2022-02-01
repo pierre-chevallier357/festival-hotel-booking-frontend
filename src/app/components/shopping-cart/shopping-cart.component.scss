@@ -13,16 +13,7 @@ body {
   border-radius: 20px;
 }
 
-.CartContainer {
-  margin-top: 15px;
-  width: 70%;
-  height: 90%;
-  background-color: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0px 10px 20px #1687d933;
-}
-
-.Header {
+.header {
   margin: auto;
   width: 90%;
   height: 15%;
@@ -31,36 +22,11 @@ body {
   align-items: center;
 }
 
-.Heading {
-  font-size: 20px;
-  font-weight: 700;
-  color: #2f3841;
-}
-
-.Action {
-  font-size: 14px;
-  font-weight: 600;
-  color: #e44c4c;
-  cursor: pointer;
-  border-bottom: 1px solid #e44c4c;
-}
-
-.Cart-Items {
-  margin: auto;
-  width: 90%;
-  height: 30%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.image-box {
-  width: 15%;
-  text-align: center;
-}
 .about {
   height: 100%;
   width: 24%;
 }
+
 .title {
   padding-top: 10px;
   line-height: 20px;
@@ -68,87 +34,30 @@ body {
   font-weight: 800;
   color: #202020;
 }
+
 .subtitle {
   line-height: 20px;
   font-size: 18px;
   font-weight: 600;
   color: #909090;
 }
-.counter {
-  width: 15%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.btn {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: #d9d9d9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-  font-weight: 900;
-  color: #202020;
-  cursor: pointer;
-}
+
 .count {
   font-size: 20px;
   font-weight: 600;
   color: #202020;
 }
+
 .prices {
   height: 100%;
   text-align: right;
-}
-.amount {
-  padding-top: 20px;
-  font-size: 26px;
-  font-weight: 800;
-  color: #202020;
-}
-.save {
-  padding-top: 5px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #1687d9;
-  cursor: pointer;
-}
-.remove {
-  padding-top: 5px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #e44c4c;
-  cursor: pointer;
-}
-.prices {
-  height: 100%;
-  text-align: right;
-}
-.amount {
-  padding-top: 20px;
-  font-size: 26px;
-  font-weight: 800;
-  color: #202020;
-}
-.save {
-  padding-top: 5px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #1687d9;
-  cursor: pointer;
-}
-.remove {
-  padding-top: 5px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #e44c4c;
-  cursor: pointer;
 }
 
-.pad {
-  margin-top: 5px;
+.amount {
+  padding-top: 20px;
+  font-size: 26px;
+  font-weight: 800;
+  color: #202020;
 }
 
 hr {
@@ -156,32 +65,26 @@ hr {
   float: right;
   margin-right: 5%;
 }
-.checkout {
-  float: right;
-  margin-right: 5%;
-  width: 28%;
-}
-.total {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-.Subtotal {
+
+.subtotal {
   font-size: 22px;
   font-weight: 700;
   color: #202020;
 }
+
 .items {
   font-size: 16px;
   font-weight: 500;
   color: #909090;
   line-height: 20px;
 }
+
 .total-amount {
   font-size: 36px;
   font-weight: 900;
   color: #202020;
 }
+
 .button {
   margin-top: 10px;
   width: 100%;
