@@ -11,6 +11,7 @@ import { Produit } from 'src/app/models/produit';
 })
 export class ShoppingCartService {
   restApiUrl: string = 'http://localhost:8080/panier';
+  numberOfPeople: number = 1;
 
   constructor(
     private userService: UserService,
@@ -26,7 +27,7 @@ export class ShoppingCartService {
       '&' +
       lodging.idetab +
       '&' +
-      1;
+      this.numberOfPeople;
     console.log(url + produit);
     let res = this.httpClient.get<boolean>(url + produit);
     res.subscribe((value) => console.log('Réservation possible: ' + value));
@@ -61,5 +62,9 @@ export class ShoppingCartService {
       .subscribe((value) => {
         console.log('Empty shopping cart: ' + value);
       });
+  }
+
+  updateNumberOfPeople(nb: number) {
+    this.numberOfPeople = nb;
   }
 }

@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'festival', component: FestivalComponent },
   { path: 'lodging', component: LodgingComponent },
   { path: 'shopping-cart', component: ShoppingCartComponent },
+  { path: '**', redirectTo: '/festival' },
 ];
 
 @NgModule({
