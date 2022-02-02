@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from './../user/user.service';
 import { Injectable } from '@angular/core';
@@ -10,7 +11,6 @@ import { Produit } from 'src/app/models/produit';
 })
 export class ShoppingCartService {
   restApiUrl: string = 'http://localhost:8080/panier';
-  userShoppingCart: Produit[] = [];
 
   constructor(
     private userService: UserService,
@@ -18,38 +18,33 @@ export class ShoppingCartService {
   ) {}
 
   addProductToShoppingCart(festival: Festival, lodging: Etablissement) {
-    console.log('Festival: ' + festival.nom);
-    console.log('Lodging: ' + lodging.nom);
-    let produit: Produit = {
-      idProduit: 0,
-      idFestivalier: this.userService.userId,
-      idFestival: festival.idFestival,
-      idEtablissement: lodging.idetab,
-      nbPass: 1,
-    };
-    console.log(
-      'URL: ' +
-        (
-          this.restApiUrl +
-          '/add-product/' +
-          this.userService.userId +
-          '&' +
-          JSON.stringify(produit)
-        ).toString()
-    );
+    let url: string = this.restApiUrl + '/add-product/';
+    let produit =
+      this.userService.userId +
+      '&' +
+      festival.idFestival +
+      '&' +
+      lodging.idetab +
+      '&' +
+      1;
+    console.log(url + produit);
+    let res = this.httpClient.get<boolean>(url + produit);
+    res.subscribe((value) => console.log('YEZUYI: ' + value));
+    return this.httpClient.get<any>(url + produit);
+    /*
+    return this.http.post<CV>(url, updatedCv)
+
     return this.httpClient.post<Produit>(
       this.restApiUrl + '/add-product/' + this.userService.userId + '&',
-      JSON.stringify(produit)
+      produit
     );
+    */
   }
 
-  getUserShoppingCart() {
-    this.httpClient
-      .get<Produit[]>(
-        this.restApiUrl + '/get-panier/' + this.userService.userId
-      )
-      .subscribe((productList: Produit[]) => {
-        this.userShoppingCart = productList;
-      });
+  getUserShoppingCart(): Observable<Produit[]> {
+    console.log(this.restApiUrl + '/get-panier/' + this.userService.userId);
+    return this.httpClient.get<Produit[]>(
+      this.restApiUrl + '/get-panier/' + this.userService.userId
+    );
   }
 }

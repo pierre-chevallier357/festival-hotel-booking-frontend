@@ -19,4 +19,8 @@ export class UserService {
         });
     }
   }
+
+  disconnectUser() {
+    this.httpClient.get(this.restApiUrl + '/delete-Festivalier/' + this.userId);
+  }
 }

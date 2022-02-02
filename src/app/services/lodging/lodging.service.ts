@@ -13,7 +13,7 @@ export class LodgingService {
   constructor(private httpClient: HttpClient) {}
 
   searchLodging(festivalId: number, name: string, type: string, city: string) {
-    console.log(
+    /*console.log(
       this.restApiUrl +
         '/search-etablissement/' +
         festivalId +
@@ -23,7 +23,7 @@ export class LodgingService {
         type +
         '&' +
         city
-    );
+    );*/
     this.httpClient
       .get<Etablissement[]>(
         this.restApiUrl +

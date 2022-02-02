@@ -2,6 +2,7 @@ import { ShoppingCartService } from './../../services/shopping-cart/shopping-car
 import { Festival } from './../../models/festival';
 import { Etablissement } from './../../models/etablissement';
 import { Component, OnInit } from '@angular/core';
+import { Produit } from 'src/app/models/produit';
 
 @Component({
   selector: 'shopping-cart',
@@ -9,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shopping-cart.component.scss'],
 })
 export class ShoppingCartComponent implements OnInit {
+  /*
   lodgingTemp: Etablissement = {
     type: 'HOTEL',
     classement: '4 étoiles',
@@ -36,10 +38,17 @@ export class ShoppingCartComponent implements OnInit {
     departement: 'Bouches-du-Rhône',
     commune: 'MARSEILLE',
   };
+  */
+  userShoppingCart: Produit[] = [];
 
   constructor(private shoppingCartService: ShoppingCartService) {}
 
   ngOnInit() {
-    this.shoppingCartService.getUserShoppingCart();
+    this.shoppingCartService
+      .getUserShoppingCart()
+      .subscribe((productList: Produit[]) => {
+        //console.log('[ShopCartComp] Product list: ' + productList);
+        this.userShoppingCart = productList;
+      });
   }
 }

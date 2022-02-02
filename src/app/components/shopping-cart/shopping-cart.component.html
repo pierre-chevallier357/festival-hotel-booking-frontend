@@ -3,6 +3,7 @@
     <div class="header">
       <h3 class="title">Panier</h3>
     </div>
+    <!--
     <div style="display: flex">
       <img src="assets/festival.jpeg" alt="Festival" style="width: 210px" />
       <div class="about">
@@ -27,7 +28,10 @@
     <div class="prices">
       <div class="amount">319,99 €</div>
     </div>
-
+-->
+    <p *ngFor="let product of userShoppingCart">
+      {{ product | json }}
+    </p>
     <hr />
     <br />
 

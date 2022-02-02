@@ -42,7 +42,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.router.events
       .pipe(filter((event: any) => event instanceof NavigationEnd))
       .subscribe((event: any) => {
-        console.log('URL: ' + event.url);
+        //console.log('URL: ' + event.url);
         this.currentRoute = event.url;
       });
   }

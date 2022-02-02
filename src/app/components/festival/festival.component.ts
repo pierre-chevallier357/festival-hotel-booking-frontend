@@ -35,10 +35,6 @@ export class FestivalComponent implements OnInit, OnDestroy {
     this.updatedFestivalList.unsubscribe();
   }
 
-  createTempUser() {
-    this.userService.createTempUser();
-  }
-
   saveSelectedFestival(festival: Festival) {
     this.festivalService.savedFestival = festival;
   }
