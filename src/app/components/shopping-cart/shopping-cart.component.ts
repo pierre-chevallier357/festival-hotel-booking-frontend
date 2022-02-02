@@ -1,3 +1,4 @@
+import { ShoppingCartService } from './../../services/shopping-cart/shopping-cart.service';
 import { Festival } from './../../models/festival';
 import { Etablissement } from './../../models/etablissement';
 import { Component, OnInit } from '@angular/core';
@@ -36,7 +37,9 @@ export class ShoppingCartComponent implements OnInit {
     commune: 'MARSEILLE',
   };
 
-  constructor() {}
+  constructor(private shoppingCartService: ShoppingCartService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.shoppingCartService.getUserShoppingCart();
+  }
 }

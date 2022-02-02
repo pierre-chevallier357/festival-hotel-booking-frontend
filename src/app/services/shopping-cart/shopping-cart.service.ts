@@ -10,6 +10,7 @@ import { Produit } from 'src/app/models/produit';
 })
 export class ShoppingCartService {
   restApiUrl: string = 'http://localhost:8080/panier';
+  userShoppingCart: Produit[] = [];
 
   constructor(
     private userService: UserService,
@@ -40,5 +41,15 @@ export class ShoppingCartService {
       this.restApiUrl + '/add-product/' + this.userService.userId + '&',
       JSON.stringify(produit)
     );
+  }
+
+  getUserShoppingCart() {
+    this.httpClient
+      .get<Produit[]>(
+        this.restApiUrl + '/get-panier/' + this.userService.userId
+      )
+      .subscribe((productList: Produit[]) => {
+        this.userShoppingCart = productList;
+      });
   }
 }

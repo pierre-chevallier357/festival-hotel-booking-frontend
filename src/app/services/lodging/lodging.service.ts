@@ -1,4 +1,3 @@
-import { UserService } from './../user/user.service';
 import { Etablissement } from './../../models/etablissement';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -11,10 +10,7 @@ export class LodgingService {
   restApiUrl: string = 'http://localhost:8080/etablissement';
   public lodgingSource = new BehaviorSubject<Etablissement[]>([]);
 
-  constructor(
-    private httpClient: HttpClient,
-    private userService: UserService
-  ) {}
+  constructor(private httpClient: HttpClient) {}
 
   searchLodging(festivalId: number, name: string, type: string, city: string) {
     console.log(
