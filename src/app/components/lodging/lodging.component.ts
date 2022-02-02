@@ -1,3 +1,4 @@
+import { ShoppingCartService } from './../../services/shopping-cart/shopping-cart.service';
 import { Etablissement } from './../../models/etablissement';
 import { Festival } from './../../models/festival';
 import { FestivalService } from 'src/app/services/festival/festival.service';
@@ -18,7 +19,8 @@ export class LodgingComponent implements OnInit, OnDestroy {
 
   constructor(
     private lodgingService: LodgingService,
-    private festivalService: FestivalService
+    private festivalService: FestivalService,
+    private shoppingCartService: ShoppingCartService
   ) {}
 
   ngOnInit() {
@@ -45,7 +47,7 @@ export class LodgingComponent implements OnInit, OnDestroy {
   }
 
   addProductToShoppingCart(lodging: Etablissement) {
-    this.lodgingService.addProductToShoppingCart(
+    this.shoppingCartService.addProductToShoppingCart(
       this.selectedFestival,
       lodging
     );
