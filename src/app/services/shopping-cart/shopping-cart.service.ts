@@ -29,8 +29,8 @@ export class ShoppingCartService {
       1;
     console.log(url + produit);
     let res = this.httpClient.get<boolean>(url + produit);
-    res.subscribe((value) => console.log('YEZUYI: ' + value));
-    return this.httpClient.get<any>(url + produit);
+    res.subscribe((value) => console.log('Réservation possible: ' + value));
+    return res;
     /*
     return this.http.post<CV>(url, updatedCv)
 
@@ -42,9 +42,24 @@ export class ShoppingCartService {
   }
 
   getUserShoppingCart(): Observable<Produit[]> {
-    console.log(this.restApiUrl + '/get-panier/' + this.userService.userId);
+    console.log(
+      'getUserShoppingCart: ' +
+        this.restApiUrl +
+        '/get-panier/' +
+        this.userService.userId
+    );
     return this.httpClient.get<Produit[]>(
       this.restApiUrl + '/get-panier/' + this.userService.userId
     );
+  }
+
+  emptyShoppingCart() {
+    this.httpClient
+      .get<boolean>(
+        this.restApiUrl + '/empty-panier/' + this.userService.userId
+      )
+      .subscribe((value) => {
+        console.log('Empty shopping cart: ' + value);
+      });
   }
 }

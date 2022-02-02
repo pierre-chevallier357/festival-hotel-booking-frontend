@@ -1,7 +1,7 @@
 import { Etablissement } from './../../models/etablissement';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,17 +13,6 @@ export class LodgingService {
   constructor(private httpClient: HttpClient) {}
 
   searchLodging(festivalId: number, name: string, type: string, city: string) {
-    /*console.log(
-      this.restApiUrl +
-        '/search-etablissement/' +
-        festivalId +
-        '&' +
-        name +
-        '&' +
-        type +
-        '&' +
-        city
-    );*/
     this.httpClient
       .get<Etablissement[]>(
         this.restApiUrl +
@@ -39,5 +28,11 @@ export class LodgingService {
       .subscribe((lodgingList) => {
         this.lodgingSource.next(lodgingList);
       });
+  }
+
+  getLodgingById(lodgingId: number): Observable<Etablissement> {
+    return this.httpClient.get<Etablissement>(
+      this.restApiUrl + '/get-etablissement/' + lodgingId
+    );
   }
 }

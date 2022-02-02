@@ -21,6 +21,24 @@ export class UserService {
   }
 
   disconnectUser() {
-    this.httpClient.get(this.restApiUrl + '/delete-Festivalier/' + this.userId);
+    this.httpClient
+      .get<number>(this.restApiUrl + '/delete-Festivalier/' + this.userId)
+      .subscribe((value) => {
+        console.log('Disconnect user: ' + value);
+      });
+  }
+
+  updateUserCredentials(name: string, email: string) {
+    this.httpClient
+      .get<number>(
+        this.restApiUrl +
+          '/connection-Festivalier/' +
+          this.userId +
+          '&' +
+          name +
+          '&' +
+          email
+      )
+      .subscribe((value) => console.log(value));
   }
 }

@@ -1,7 +1,11 @@
-import { ShoppingCartService } from './../../services/shopping-cart/shopping-cart.service';
-import { Festival } from './../../models/festival';
+import { Subscription } from 'rxjs';
+import { LoginService } from './../../services/login/login.service';
+import { LodgingService } from './../../services/lodging/lodging.service';
+import { FestivalService } from 'src/app/services/festival/festival.service';
 import { Etablissement } from './../../models/etablissement';
-import { Component, OnInit } from '@angular/core';
+import { Festival } from 'src/app/models/festival';
+import { ShoppingCartService } from './../../services/shopping-cart/shopping-cart.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Produit } from 'src/app/models/produit';
 
 @Component({
@@ -9,46 +13,52 @@ import { Produit } from 'src/app/models/produit';
   templateUrl: './shopping-cart.component.html',
   styleUrls: ['./shopping-cart.component.scss'],
 })
-export class ShoppingCartComponent implements OnInit {
-  /*
-  lodgingTemp: Etablissement = {
-    type: 'HOTEL',
-    classement: '4 étoiles',
-    nom: 'HÔTEL GOLDEN TULIP VILLA MASSALIA MARSEILLE',
-    telephone: '0491729027',
-    email: 'info@goldentulipvillamassalia.com',
-    siteInternet: 'www.goldentulipvillamassalia.com',
-    capaciteDAccueil: 1220,
-    codePostal: 13008,
-    adresse: '17 place Louis Bonnefon',
-    departement: 'BOUCHES-DU-RHONE',
-    region: "PROVENCE-ALPES-COTE D'AZUR",
-    commune: 'MARSEILLE',
-    nbLogement: 140,
-    idetab: 243,
-    coordonnesGPSString: '5.381553,0.0',
-  };
-  festivalTemp: Festival = {
-    nom: 'Biennale Internationale des Arts du Cirque Provence Alpes Côte d’Azur (BIAC)',
-    domaine: 'Cirque et Arts de la rue',
-    complementDomaine: 'Cirque',
-    idFestival: 1,
-    moisIndicatif: '1',
-    duree: 30,
-    departement: 'Bouches-du-Rhône',
-    commune: 'MARSEILLE',
-  };
-  */
-  userShoppingCart: Produit[] = [];
+export class ShoppingCartComponent implements OnInit, OnDestroy {
+  userShoppingCart: { festival: Festival; lodging: Etablissement }[] = [];
+  isConnected: boolean = false;
+  loginSubscription!: Subscription;
 
-  constructor(private shoppingCartService: ShoppingCartService) {}
+  constructor(
+    private shoppingCartService: ShoppingCartService,
+    private festivalService: FestivalService,
+    private lodgingService: LodgingService,
+    private loginService: LoginService
+  ) {}
 
   ngOnInit() {
+    let festival: Festival;
+    let lodging: Etablissement;
     this.shoppingCartService
       .getUserShoppingCart()
       .subscribe((productList: Produit[]) => {
-        //console.log('[ShopCartComp] Product list: ' + productList);
-        this.userShoppingCart = productList;
+        productList.forEach((product) => {
+          this.festivalService
+            .getFestivalById(product.idFestival)
+            .subscribe((festi) => {
+              festival = festi;
+              this.lodgingService
+                .getLodgingById(product.idEtablissement)
+                .subscribe((lodg) => {
+                  lodging = lodg;
+                  this.userShoppingCart.push({ festival, lodging });
+                });
+            });
+        });
       });
+    this.loginSubscription = this.loginService.nameSubject.subscribe((name) => {
+      if (name === '') {
+        this.isConnected = false;
+      } else {
+        this.isConnected = true;
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    this.loginSubscription.unsubscribe();
+  }
+
+  pay() {
+    console.log('NOT CONNECTED');
   }
 }

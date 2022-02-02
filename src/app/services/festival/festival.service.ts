@@ -95,4 +95,10 @@ export class FestivalService {
         this.festivalSource.next(festivalList);
       });
   }
+
+  getFestivalById(festivalId: number): Observable<Festival> {
+    return this.httpClient.get<Festival>(
+      this.restApiUrl + '/get-festival/' + festivalId
+    );
+  }
 }
