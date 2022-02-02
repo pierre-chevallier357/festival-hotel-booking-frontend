@@ -71,13 +71,23 @@ export class NavbarComponent implements OnInit, OnDestroy {
         tempDepartement = filters[2].name;
       }
     }
-    this.festivalService.searchFestival(
-      tempName,
-      tempCity,
-      tempType,
-      tempDepartement,
-      tempMonth
-    );
+    if (
+      !(
+        tempName === 'null' &&
+        tempType === 'null' &&
+        tempCity === 'null' &&
+        tempMonth === 'null' &&
+        tempDepartement === 'null'
+      )
+    ) {
+      this.festivalService.searchFestival(
+        tempName,
+        tempCity,
+        tempType,
+        tempDepartement,
+        tempMonth
+      );
+    }
   }
 
   searchLodging(filters?: any) {
@@ -96,11 +106,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
         tempType = filters[0].city.toUpperCase();
       }
     }
-    this.lodgingService.searchLodging(
-      this.festivalService.savedFestival.idFestival,
-      tempName,
-      tempType,
-      tempCity
-    );
+    if (!(tempName === 'null' && tempType === 'null' && tempCity === 'null')) {
+      this.lodgingService.searchLodging(
+        this.festivalService.savedFestival.idFestival,
+        tempName,
+        tempType,
+        tempCity
+      );
+    }
   }
 }
