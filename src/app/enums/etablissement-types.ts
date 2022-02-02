@@ -6,13 +6,13 @@ let EtablissementTypes: { name: string }[] = [
     name: 'Camping',
   },
   {
-    name: 'Parc',
+    name: 'Parc residentiel de loisirs',
   },
   {
-    name: 'Village',
+    name: 'Village de vacances',
   },
   {
-    name: 'Résidence',
+    name: 'Residence de tourisme',
   },
 ];
 

@@ -16,7 +16,6 @@ export class UserService {
         .get<number>(this.restApiUrl + '/create-Temp-user/')
         .subscribe((userId) => {
           this.userId = userId;
-          console.log(userId);
         });
     }
   }

@@ -88,9 +88,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
     if (this.searchValue !== '') {
       tempName = this.searchValue.toUpperCase();
     }
-    if (filters) {
-      if (filters[0].name !== '') {
-        tempType = filters[0].name.toUpperCase();
+    if (filters || filters !== undefined) {
+      filters.forEach((value: any) => console.log('value: ' + value.value));
+      if (filters[1].type !== '') {
+        tempType = filters[0].type.toUpperCase();
+      }
+      if (filters[2].city !== '') {
+        tempType = filters[0].city.toUpperCase();
       }
     }
     this.lodgingService.searchLodging(
