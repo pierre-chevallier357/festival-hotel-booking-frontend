@@ -1,4 +1,4 @@
-<mat-form-field appearance="fill" class="criteria">
+<mat-form-field appearance="fill">
   <mat-label>Type d'établissement</mat-label>
   <mat-select
     [(value)]="selectedType"
@@ -9,7 +9,18 @@
     </mat-option>
   </mat-select>
 </mat-form-field>
-
+<input
+  type="number"
+  matInput
+  class="lodging-filter-input"
+  [(ngModel)]="numberOfPeople"
+  placeholder="Nombre de personnes"
+  (keyup.enter)="sendFiltersToParent()"
+  min="1"
+  max="10"
+/>
+{{ numberOfPeople }}
+<!--
 <input
   type="text"
   class="lodging-filter-input"
@@ -17,3 +28,4 @@
   [(ngModel)]="cityValue"
   (keyup.enter)="sendFiltersToParent()"
 />
+-->

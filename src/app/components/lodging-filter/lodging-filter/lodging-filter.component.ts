@@ -12,7 +12,7 @@ export class LodgingFilterComponent {
   >();
   lodgingTypeList: { name: string }[] = EtablissementTypes;
   selectedType: { name: string } = { name: '' };
-  cityValue: string = '';
+  numberOfPeople: number = 1;
 
   sendFiltersToParent() {
     this.filtersChange.emit([this.selectedType]);
