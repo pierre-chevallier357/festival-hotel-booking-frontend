@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class ShoppingCartService {
-  restApiUrl: string = 'http://129.88.210.2:4200/panier';
+  restApiUrl: string = 'http://localhost:4200/panier';
   numberOfPeople: number = 1;
 
   constructor(
@@ -20,7 +20,10 @@ export class ShoppingCartService {
     private router: Router
   ) {}
 
-  addProductToShoppingCart(festival: Festival, lodging: Etablissement) {
+  addProductToShoppingCart(
+    festival: Festival,
+    lodging: Etablissement
+  ): Observable<boolean> {
     let url: string = this.restApiUrl + '/add-product/';
     console.log('Nombre de pass: ', this.numberOfPeople);
     let produit =
@@ -33,10 +36,13 @@ export class ShoppingCartService {
       this.numberOfPeople;
     console.log(url + produit);
     let res = this.httpClient.get<boolean>(url + produit);
-    res.subscribe((value) => console.log('Réservation possible: ' + value));
-    if (res) {
-      this.router.navigateByUrl('/shopping-cart');
-    }
+    res.subscribe((value) => {
+      console.log('Réservation possible: ' + value);
+      if (value) {
+        this.router.navigateByUrl('/shopping-cart');
+      }
+    });
+
     return res;
     /*
     return this.http.post<CV>(url, updatedCv)

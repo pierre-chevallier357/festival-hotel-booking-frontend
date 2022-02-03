@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class UserService {
-  restApiUrl: string = 'http://129.88.210.2:4200/user';
+  restApiUrl: string = 'http://localhost:4200/user';
   public userId: number = 0;
 
   constructor(private httpClient: HttpClient) {}
