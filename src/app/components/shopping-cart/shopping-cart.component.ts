@@ -67,6 +67,6 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   }
 
   pay() {
-    console.log('NOT CONNECTED');
+    console.log('Navigation vers paiement');
   }
 }

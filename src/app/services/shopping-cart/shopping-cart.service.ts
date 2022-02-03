@@ -5,22 +5,24 @@ import { Injectable } from '@angular/core';
 import { Etablissement } from 'src/app/models/etablissement';
 import { Festival } from 'src/app/models/festival';
 import { Produit } from 'src/app/models/produit';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ShoppingCartService {
-  restApiUrl: string = 'http://localhost:4200/panier';
+  restApiUrl: string = 'http://129.88.210.2:4200/panier';
   numberOfPeople: number = 1;
 
   constructor(
     private userService: UserService,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private router: Router
   ) {}
 
   addProductToShoppingCart(festival: Festival, lodging: Etablissement) {
     let url: string = this.restApiUrl + '/add-product/';
-    console.log('YESSEUH: ', this.numberOfPeople);
+    console.log('Nombre de pass: ', this.numberOfPeople);
     let produit =
       this.userService.userId +
       '&' +
@@ -32,6 +34,9 @@ export class ShoppingCartService {
     console.log(url + produit);
     let res = this.httpClient.get<boolean>(url + produit);
     res.subscribe((value) => console.log('Réservation possible: ' + value));
+    if (res) {
+      this.router.navigateByUrl('/shopping-cart');
+    }
     return res;
     /*
     return this.http.post<CV>(url, updatedCv)
