@@ -20,6 +20,7 @@ export class ShoppingCartService {
 
   addProductToShoppingCart(festival: Festival, lodging: Etablissement) {
     let url: string = this.restApiUrl + '/add-product/';
+    console.log('YESSEUH: ', this.numberOfPeople);
     let produit =
       this.userService.userId +
       '&' +

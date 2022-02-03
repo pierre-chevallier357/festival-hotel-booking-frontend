@@ -18,6 +18,7 @@ export class LodgingFilterComponent implements OnChanges {
   constructor(private shoppingCartService: ShoppingCartService) {}
 
   ngOnChanges(): void {
+    console.log('updateNumberOfPeople');
     this.shoppingCartService.updateNumberOfPeople(this.numberOfPeople);
   }
 

@@ -14,7 +14,11 @@ import { Produit } from 'src/app/models/produit';
   styleUrls: ['./shopping-cart.component.scss'],
 })
 export class ShoppingCartComponent implements OnInit, OnDestroy {
-  userShoppingCart: { festival: Festival; lodging: Etablissement }[] = [];
+  userShoppingCart: {
+    festival: Festival;
+    lodging: Etablissement;
+    nbPass: number;
+  }[] = [];
   isConnected: boolean = false;
   loginSubscription!: Subscription;
 
@@ -28,10 +32,12 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   ngOnInit() {
     let festival: Festival;
     let lodging: Etablissement;
+    let nbPass: number;
     this.shoppingCartService
       .getUserShoppingCart()
       .subscribe((productList: Produit[]) => {
         productList.forEach((product) => {
+          nbPass = product.nbPass;
           this.festivalService
             .getFestivalById(product.idFestival)
             .subscribe((festi) => {
@@ -40,7 +46,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
                 .getLodgingById(product.idEtablissement)
                 .subscribe((lodg) => {
                   lodging = lodg;
-                  this.userShoppingCart.push({ festival, lodging });
+                  this.userShoppingCart.push({ festival, lodging, nbPass });
                 });
             });
         });
