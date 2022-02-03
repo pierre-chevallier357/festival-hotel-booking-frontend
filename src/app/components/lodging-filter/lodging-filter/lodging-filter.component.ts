@@ -1,5 +1,5 @@
 import { ShoppingCartService } from './../../../services/shopping-cart/shopping-cart.service';
-import { Component, EventEmitter, Output, OnChanges } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { EtablissementTypes } from 'src/app/enums/etablissement-types';
 
 @Component({
@@ -8,9 +8,9 @@ import { EtablissementTypes } from 'src/app/enums/etablissement-types';
   styleUrls: ['./lodging-filter.component.scss'],
 })
 export class LodgingFilterComponent {
-  @Output() filtersChange: EventEmitter<[{ name: string }]> = new EventEmitter<
-    [{ name: string }]
-  >();
+  @Output() filtersChange: EventEmitter<
+    [{ name: string }, { numberOfPeople: number }]
+  > = new EventEmitter<[{ name: string }, { numberOfPeople: number }]>();
   lodgingTypeList: { name: string }[] = EtablissementTypes;
   selectedType: { name: string } = { name: '' };
   numberOfPeople: number = 1;
@@ -18,8 +18,11 @@ export class LodgingFilterComponent {
   constructor(private shoppingCartService: ShoppingCartService) {}
 
   sendFiltersToParent() {
-    console.log('updateNumberOfPeople');
+    console.log('updateNumberOfPeople: ' + this.numberOfPeople);
     this.shoppingCartService.updateNumberOfPeople(this.numberOfPeople);
-    this.filtersChange.emit([this.selectedType]);
+    this.filtersChange.emit([
+      this.selectedType,
+      { numberOfPeople: this.numberOfPeople },
+    ]);
   }
 }

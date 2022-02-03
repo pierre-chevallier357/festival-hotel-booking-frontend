@@ -1,3 +1,4 @@
+import { FestivalService } from 'src/app/services/festival/festival.service';
 import { Etablissement } from './../../models/etablissement';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -12,7 +13,7 @@ export class LodgingService {
 
   constructor(private httpClient: HttpClient) {}
 
-  searchLodging(festivalId: number, name: string, type: string, city: string) {
+  searchLodging(festivalId: number, name: string, type: string, city?: string) {
     this.httpClient
       .get<Etablissement[]>(
         this.restApiUrl +

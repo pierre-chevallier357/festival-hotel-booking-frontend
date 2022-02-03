@@ -93,24 +93,24 @@ export class NavbarComponent implements OnInit, OnDestroy {
   searchLodging(filters?: any) {
     let tempName = 'null';
     let tempType = 'null';
-    let tempCity = 'null';
+    let tempNumberOfPeople = 1;
     if (this.searchValue !== '') {
       tempName = this.searchValue.toUpperCase();
     }
     if (filters || filters !== undefined) {
-      if (filters[1].type !== undefined && filters[1].type !== '') {
-        tempType = filters[0].type.toUpperCase();
+      if (filters[0].name !== undefined && filters[0].name !== '') {
+        tempType = filters[0].name.toUpperCase();
       }
-      if (filters[2].city !== '') {
-        tempType = filters[0].city.toUpperCase();
-      }
+      tempNumberOfPeople = filters[1].numberOfPeople;
     }
-    if (!(tempName === 'null' && tempType === 'null' && tempCity === 'null')) {
+    if (
+      !(tempName === 'null' && tempType === 'null' && tempNumberOfPeople === 0)
+    ) {
       this.lodgingService.searchLodging(
         this.festivalService.savedFestival.idFestival,
         tempName,
         tempType,
-        tempCity
+        this.festivalService.savedFestival.commune
       );
     }
   }

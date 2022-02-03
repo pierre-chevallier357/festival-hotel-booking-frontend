@@ -29,13 +29,9 @@
 
     <hr />
     <br />
-    <!--
-    <div style="text-align: right">
-      <div class="subtotal">Total</div>
-      <div class="items">2 produits</div>
-      <div class="total-amount">6,18 €</div>
+    <div class="prices">
+      <div class="amount">Total : {{ totalNumberOfPass }} pass</div>
     </div>
-    -->
     <button
       *ngIf="isConnected"
       class="button"
@@ -51,6 +47,7 @@
     >
       Payer
     </button>
+    <br />
   </mat-card>
   <mat-card *ngIf="!isConnected" class="not-connected shopping-cart-card">
     <p>Veuillez vous connecter pour payer</p>

@@ -21,6 +21,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   }[] = [];
   isConnected: boolean = false;
   loginSubscription!: Subscription;
+  totalNumberOfPass: number = 0;
 
   constructor(
     private shoppingCartService: ShoppingCartService,
@@ -38,6 +39,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
       .subscribe((productList: Produit[]) => {
         productList.forEach((product) => {
           nbPass = product.nbPass;
+          this.totalNumberOfPass += 1;
           this.festivalService
             .getFestivalById(product.idFestival)
             .subscribe((festi) => {
