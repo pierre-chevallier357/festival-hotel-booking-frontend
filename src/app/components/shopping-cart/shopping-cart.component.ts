@@ -24,6 +24,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   loginSubscription!: Subscription;
   totalNumberOfPass: number = 0;
   productId: number = 0;
+  clickedPay: boolean = false;
 
   constructor(
     private shoppingCartService: ShoppingCartService,
@@ -80,10 +81,6 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   }
 
   pay() {
-    console.log('Navigation vers paiement');
-  }
-
-  identify(index: number, item: any) {
-    return item.id;
+    this.clickedPay = true;
   }
 }

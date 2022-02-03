@@ -21,8 +21,11 @@
   </mat-card>
   <mat-card class="login-card bottom-card">
   <div class="loggin-form-spacer">-->
-  <span *ngIf="festivalGoerTabIsActive">
+  <span *ngIf="festivalGoerTabIsActive && this.loginService.name === ''">
     <facebook-login></facebook-login>
+  </span>
+  <span *ngIf="festivalGoerTabIsActive && this.loginService.name !== ''">
+    <h3 class="green-text">Vous êtes connecté</h3>
   </span>
   <!--
       <span *ngIf="!festivalGoerTabIsActive">

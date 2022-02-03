@@ -1,7 +1,10 @@
 <body>
   <mat-card class="shopping-cart-card">
-    <div class="header">
+    <div *ngIf="!clickedPay" class="header">
       <h3 class="title">Panier</h3>
+    </div>
+    <div *ngIf="clickedPay" class="header">
+      <h3 class="title">Votre réservation</h3>
     </div>
     <span *ngFor="let product of userShoppingCart; let i = index">
       <span *ngIf="i % 2 === 0">
@@ -39,7 +42,7 @@
       <div class="amount">Total : {{ totalNumberOfPass / 2 }} pass</div>
     </div>
     <button
-      *ngIf="isConnected"
+      *ngIf="isConnected && !clickedPay"
       class="button"
       (click)="pay()"
       [disabled]="!isConnected"
@@ -47,7 +50,7 @@
       Payer
     </button>
     <button
-      *ngIf="!isConnected"
+      *ngIf="!isConnected && !clickedPay"
       class="button-not-connected"
       [disabled]="isConnected"
     >
@@ -55,7 +58,13 @@
     </button>
     <br />
   </mat-card>
-  <mat-card *ngIf="!isConnected" class="not-connected shopping-cart-card">
+  <mat-card
+    *ngIf="!isConnected && !clickedPay"
+    class="not-connected shopping-cart-card"
+  >
     <p>Veuillez vous connecter pour payer</p>
+  </mat-card>
+  <mat-card *ngIf="clickedPay" class="paid shopping-cart-card">
+    <p>Paiement validé ✅</p>
   </mat-card>
 </body>

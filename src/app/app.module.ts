@@ -1,7 +1,3 @@
-import { LodgingFilterComponent } from './components/lodging-filter/lodging-filter/lodging-filter.component';
-import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
-import { LodgingComponent } from './components/lodging/lodging.component';
-import { FestivalFilterComponent } from './components/festival-filter/festival-filter.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,6 +22,10 @@ import { LoginComponent } from './components/login/login.component';
 import { ProfessionalLoginComponent } from './components/login/professional-login/professional-login.component';
 import { FacebookLoginComponent } from './components/login/facebook-login/facebook-login.component';
 import { FestivalComponent } from './components/festival/festival.component';
+import { LodgingFilterComponent } from './components/lodging-filter/lodging-filter/lodging-filter.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { LodgingComponent } from './components/lodging/lodging.component';
+import { FestivalFilterComponent } from './components/festival-filter/festival-filter.component';
 
 @NgModule({
   declarations: [

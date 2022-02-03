@@ -1,3 +1,4 @@
+import { LoginService } from './../../services/login/login.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
   festivalGoerTabIsActive: boolean = true;
+
+  constructor(public loginService: LoginService) {}
 
   enableFestivalGoerTab() {
     this.festivalGoerTabIsActive = true;
