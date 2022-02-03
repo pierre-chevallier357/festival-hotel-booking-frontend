@@ -10,7 +10,7 @@ import { Produit } from 'src/app/models/produit';
   providedIn: 'root',
 })
 export class ShoppingCartService {
-  restApiUrl: string = 'http://localhost:8080/panier';
+  restApiUrl: string = 'http://localhost:4200/panier';
   numberOfPeople: number = 1;
 
   constructor(

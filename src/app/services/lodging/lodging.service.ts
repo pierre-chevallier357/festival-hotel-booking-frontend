@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class LodgingService {
-  restApiUrl: string = 'http://localhost:8080/etablissement';
+  restApiUrl: string = 'http://localhost:4200/etablissement';
   public lodgingSource = new BehaviorSubject<Etablissement[]>([]);
 
   constructor(private httpClient: HttpClient) {}
