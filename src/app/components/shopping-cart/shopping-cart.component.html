@@ -3,34 +3,40 @@
     <div class="header">
       <h3 class="title">Panier</h3>
     </div>
-    <span *ngFor="let product of userShoppingCart">
-      <div style="display: flex">
-        <img src="assets/festival.jpeg" alt="Festival" style="width: 150px" />
-        <div class="about">
-          <h1 class="title">{{ product.festival.nom }}</h1>
-          <h3 class="subtitle">{{ product.festival.commune }}</h3>
-          <img src="assets/favicon.png" alt="icon" style="height: 30px" />
+    <span *ngFor="let product of userShoppingCart; let i = index">
+      <span *ngIf="i % 2 === 0">
+        <div style="display: flex">
+          <img src="assets/festival.jpeg" alt="Festival" style="width: 150px" />
+          <div class="about">
+            <h1 class="title">{{ product.festival.nom }}</h1>
+            <h3 class="subtitle">{{ product.festival.commune }}</h3>
+            <img src="assets/favicon.png" alt="icon" style="height: 30px" />
+          </div>
         </div>
-      </div>
 
-      <div style="display: flex">
-        <img src="assets/lodging.jpeg" alt="Hébergement" style="width: 150px" />
+        <div style="display: flex">
+          <img
+            src="assets/lodging.jpeg"
+            alt="Hébergement"
+            style="width: 150px"
+          />
 
-        <div class="about">
-          <h1 class="title">{{ product.lodging.nom }}</h1>
-          <h3 class="subtitle">{{ product.lodging.commune }}</h3>
-          <img src="assets/favicon.png" alt="icon" style="height: 30px" />
+          <div class="about">
+            <h1 class="title">{{ product.lodging.nom }}</h1>
+            <h3 class="subtitle">{{ product.lodging.commune }}</h3>
+            <img src="assets/favicon.png" alt="icon" style="height: 30px" />
+          </div>
         </div>
-      </div>
-      <div class="prices">
-        <div class="amount">{{ product.nbPass }} pass</div>
-      </div>
+        <div class="prices">
+          <div class="amount">{{ product.nbPass }} pass</div>
+        </div>
+      </span>
     </span>
 
     <hr />
     <br />
     <div class="prices">
-      <div class="amount">Total : {{ totalNumberOfPass }} pass</div>
+      <div class="amount">Total : {{ totalNumberOfPass / 2 }} pass</div>
     </div>
     <button
       *ngIf="isConnected"

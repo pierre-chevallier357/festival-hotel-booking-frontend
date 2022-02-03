@@ -14,10 +14,7 @@ export class FestivalComponent implements OnInit, OnDestroy {
   allFestivalsSubscription: Subscription = new Subscription();
   updatedFestivalList: Subscription = new Subscription();
 
-  constructor(
-    private festivalService: FestivalService,
-    private userService: UserService
-  ) {}
+  constructor(private festivalService: FestivalService) {}
 
   ngOnInit() {
     this.allFestivalsSubscription = this.festivalService

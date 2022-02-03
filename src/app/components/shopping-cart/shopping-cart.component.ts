@@ -15,6 +15,7 @@ import { Produit } from 'src/app/models/produit';
 })
 export class ShoppingCartComponent implements OnInit, OnDestroy {
   userShoppingCart: {
+    id: number;
     festival: Festival;
     lodging: Etablissement;
     nbPass: number;
@@ -22,6 +23,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   isConnected: boolean = false;
   loginSubscription!: Subscription;
   totalNumberOfPass: number = 0;
+  productId: number = 0;
 
   constructor(
     private shoppingCartService: ShoppingCartService,
@@ -38,8 +40,10 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
       .getUserShoppingCart()
       .subscribe((productList: Produit[]) => {
         productList.forEach((product) => {
+          console.log('Received product: ' + product);
           nbPass = product.nbPass;
           this.totalNumberOfPass += 1;
+          this.productId += 1;
           this.festivalService
             .getFestivalById(product.idFestival)
             .subscribe((festi) => {
@@ -48,7 +52,16 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
                 .getLodgingById(product.idEtablissement)
                 .subscribe((lodg) => {
                   lodging = lodg;
-                  this.userShoppingCart.push({ festival, lodging, nbPass });
+                  const id = this.productId;
+                  this.userShoppingCart.push({
+                    id,
+                    festival,
+                    lodging,
+                    nbPass,
+                  });
+                  console.log(
+                    'Product: ' + festival.nom + lodging.nom + nbPass
+                  );
                 });
             });
         });
@@ -68,5 +81,9 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
 
   pay() {
     console.log('Navigation vers paiement');
+  }
+
+  identify(index: number, item: any) {
+    return item.id;
   }
 }

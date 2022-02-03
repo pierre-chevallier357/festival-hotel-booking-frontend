@@ -24,6 +24,7 @@ export class ShoppingCartService {
     festival: Festival,
     lodging: Etablissement
   ): Observable<boolean> {
+    console.log('CALLED ADD PRODUCT');
     let url: string = this.restApiUrl + '/add-product/';
     console.log('Nombre de pass: ', this.numberOfPeople);
     let produit =
@@ -55,6 +56,7 @@ export class ShoppingCartService {
   }
 
   getUserShoppingCart(): Observable<Produit[]> {
+    console.log('CALLED GET PANIER');
     console.log(
       'getUserShoppingCart: ' +
         this.restApiUrl +
