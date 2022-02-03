@@ -15,6 +15,7 @@
     type="number"
     matInput
     [(ngModel)]="numberOfPeople"
+    (ngModelChange)="sendFiltersToParent()"
     class="lodging-filter-input"
     placeholder="Nombre de personnes"
     (keyup.enter)="sendFiltersToParent()"

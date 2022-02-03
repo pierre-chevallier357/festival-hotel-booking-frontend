@@ -7,7 +7,7 @@ import { EtablissementTypes } from 'src/app/enums/etablissement-types';
   templateUrl: './lodging-filter.component.html',
   styleUrls: ['./lodging-filter.component.scss'],
 })
-export class LodgingFilterComponent implements OnChanges {
+export class LodgingFilterComponent {
   @Output() filtersChange: EventEmitter<[{ name: string }]> = new EventEmitter<
     [{ name: string }]
   >();
@@ -17,12 +17,9 @@ export class LodgingFilterComponent implements OnChanges {
 
   constructor(private shoppingCartService: ShoppingCartService) {}
 
-  ngOnChanges(): void {
+  sendFiltersToParent() {
     console.log('updateNumberOfPeople');
     this.shoppingCartService.updateNumberOfPeople(this.numberOfPeople);
-  }
-
-  sendFiltersToParent() {
     this.filtersChange.emit([this.selectedType]);
   }
 }
